@@ -12,3 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(ledPin,GPIO.OUT)
 GPIO.setup(pwmPin,GPIO.OUT)
 GPIO.setup(butPin,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+pwm = GPIO.PWM(pwmPin,200)
+GPIO.output(ledPin, GPIO.LOW)
+pwm.start(duty)
