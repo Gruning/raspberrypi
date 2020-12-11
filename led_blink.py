@@ -20,8 +20,13 @@ pwm.start(duty)
 while 1:
     if GPIO.input(butPin):
         pwm.ChangeDutyCycle(duty)
-        GPIO.outpul(ledPin,GPIO.LOW)
+        GPIO.output(ledPin,GPIO.LOW)
     else:
-        pass
+        pwm.ChangeDutyCycle(duty)
+        GPIO.output(ledPin,GPIO.HIGH)
+        time.sleep(0.5)
+        pwm.ChangeDutyCycle(100-duty)
+        GPIO.output(ledPin,GPIO.LOW)
+        time.sleep(0.5)
 
     #button pressed # blink green # bright <->dim red
